@@ -1,0 +1,17 @@
+.jumbotron {
+	background-image: url('../images/trainpic.jpg');
+	color: white;
+}
+
+h1 {
+	font-family:serif;
+}
+
+h3 {
+	color:white;
+}
+
+body{
+	background-color: black;
+
+}
