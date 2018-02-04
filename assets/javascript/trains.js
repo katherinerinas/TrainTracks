@@ -1,14 +1,81 @@
 
-  var config = {
-    apiKey: "AIzaSyAueOzPrIK2N_xM55izJ6OK60JrFPX7YIs",
-    authDomain: "my-awesome-project-34a06.firebaseapp.com",
-    databaseURL: "https://my-awesome-project-34a06.firebaseio.com",
-    projectId: "my-awesome-project-34a06",
-    storageBucket: "my-awesome-project-34a06.appspot.com",
-    messagingSenderId: "543373788237"
-  };
-  firebase.initializeApp(config);
 
-  firebase.database();
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBSPB4ZktB-UcuYv5hdjD1OdhTzv58HAj0",
+    authDomain: "train-tracks-24af8.firebaseapp.com",
+    databaseURL: "https://train-tracks-24af8.firebaseio.com",
+    storageBucket: "train-tracks-24af8.appspot.com"
+    
+ };
+
+firebase.initializeApp(config);
+
+
+ var database =firebase.database();
+
+ $("#add-train-btn").on("click", function(event){
+  event.preventDefault();
+
+var trainName=$("#train-name-input").val().trim();
+var destination =$("#destination-input").val().trim();
+var firstTrain =moment($("#firsttrain-input").val().trim(), "DD/MM/YY").format("X");
+var frequency =$("#frequency-input").val().trim();
+
+
+var newTrain= {
+  name: trainName,
+  destination: destination,
+  firsttrain: firstTrain,
+  frequency: frequency
+
+};
+
+
+database.ref().push(newTrain);
+
+console.log(newTrain.name);
+console.log(newTrain.destination);
+console.log(newTrain.firsttrain);
+console.log(newTrain.frequency);
+
+
+alert("Your train has been added!");
+
+
+$("#train-name-input").val("");
+$("#destination-input").val("");
+$("#firsttrain-input").val("");
+$("#frequency-input").val("");
+
+});
+
+ database.ref().on("child_added", function(childSnapshot, prevChildKey){
+  console.log(childSnapshot.val());
+
+var trainName = childSnapshot.val().name;
+var destination = childSnapshot.val().destination;
+var firstTrain = childSnapshot.val().firsttrain;
+var frequency = childSnapshot.val().frequency;
+
+console.log(trainName);
+console.log(destination);
+console.log(firstTrain);
+console.log(frequency);
+
+
+var choochooPretty = moment.unix(firstTrain).format("MM/DD/YY");
+
+var nextArrival = firstTrain * frequency;
+
+$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
+  choochooPretty + "</td><td>" + firstTrain + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td></tr>");
+});
+
+
+
+
+
+ 
 
   
