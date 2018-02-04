@@ -51,6 +51,7 @@ $("#frequency-input").val("");
 });
 
  database.ref().on("child_added", function(childSnapshot, prevChildKey){
+  
   console.log(childSnapshot.val());
 
 var trainName = childSnapshot.val().name;
@@ -66,10 +67,30 @@ console.log(frequency);
 
 var choochooPretty = moment.unix(firstTrain).format("MM/DD/YY");
 
-var nextArrival = firstTrain * frequency;
+var tFrequency = frequency;
+var firstTime= firstTrain ;
 
-$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
-  choochooPretty + "</td><td>" + firstTrain + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td></tr>");
+var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
+console.log (firstTimeConverted);
+
+var currentTime = moment();
+console.log ("CURRENT TIME: "+ moment(currentTime).format("hh:mm"));
+
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+console.log("difference in time" + diffTime);
+
+var tRemainder = diffTime % tFrequency;
+console.log(tRemainder);
+
+var tMinutesTillTrain = tFrequency - tRemainder;
+console.log("minutes till train:" + tMinutesTillTrain);
+
+var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+console.log ("arrival time" + moment(nextTrain).format("hh:mm"));
+
+
+$("#trainTable > tbody").html("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
+  choochooPretty + "</td><td>" + firstTrain + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td></tr>");
 });
 
 
