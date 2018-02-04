@@ -43,10 +43,10 @@ console.log(newTrain.frequency);
 alert("Your train has been added!");
 
 
-$("#train-name-input").val("");
-$("#destination-input").val("");
-$("#firsttrain-input").val("");
-$("#frequency-input").val("");
+//$("#train-name-input").val("");
+//$("#destination-input").val("");
+//$("#firsttrain-input").val("");
+//$("#frequency-input").val("");
 
 });
 
@@ -89,9 +89,11 @@ var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log ("arrival time" + moment(nextTrain).format("hh:mm"));
 
 
-$("#trainTable > tbody").html("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
+$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
   choochooPretty + "</td><td>" + firstTrain + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td></tr>");
+
 });
+
 
 
 
