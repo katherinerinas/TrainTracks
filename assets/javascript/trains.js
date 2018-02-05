@@ -43,27 +43,17 @@ console.log(newTrain.frequency);
 alert("Your train has been added!");
 
 
-//$("#train-name-input").val("");
-//$("#destination-input").val("");
-//$("#firsttrain-input").val("");
-//$("#frequency-input").val("");
 
 });
 
  database.ref().on("child_added", function(childSnapshot, prevChildKey){
   
-  console.log(childSnapshot.val());
+  
 
 var trainName = childSnapshot.val().name;
 var destination = childSnapshot.val().destination;
 var firstTrain = childSnapshot.val().firsttrain;
 var frequency = childSnapshot.val().frequency;
-
-console.log(trainName);
-console.log(destination);
-console.log(firstTrain);
-console.log("frequency" + frequency);
-
 
 
 
@@ -73,24 +63,23 @@ var firstTime= firstTrain ;
 var frequencyPretty = moment.unix(frequency).format("hh:mm")
 
 var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
-console.log (firstTimeConverted);
+
 
 var currentTime = moment();
-console.log ("CURRENT TIME: "+ moment(currentTime).format("hh:mm"));
+
 
 var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-console.log("difference in time" + diffTime);
+
 
 var tRemainder = diffTime % tFrequency;
-console.log(tRemainder);
+
 
 var tMinutesTillTrain = tFrequency - tRemainder;
-console.log("minutes till train:" + tMinutesTillTrain);
+
 
 //var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
 
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-console.log ("arrival time" + moment(nextTrain).format("hh:mm"));
 var choochooPretty = moment.unix(nextTrain).format("hh:mm");
 
 
