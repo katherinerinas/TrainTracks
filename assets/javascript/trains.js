@@ -19,7 +19,7 @@ firebase.initializeApp(config);
 
 var trainName=$("#train-name-input").val().trim();
 var destination =$("#destination-input").val().trim();
-var firstTrain =moment($("#firsttrain-input").val().trim(), "DD/MM/YY").format("X");
+var firstTrain =moment($("#firsttrain-input").val().trim(), "hh:mm").format("X");
 var frequency =$("#frequency-input").val().trim();
 
 
@@ -87,11 +87,12 @@ console.log(tRemainder);
 var tMinutesTillTrain = tFrequency - tRemainder;
 console.log("minutes till train:" + tMinutesTillTrain);
 
+var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
+
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log ("arrival time" + moment(nextTrain).format("hh:mm"));
 var choochooPretty = moment.unix(nextTrain).format("hh:mm");
 
-var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
 
 $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
  frequency + "</td><td>" + choochooPretty + "</td><td>" + minutesAwayPretty + "</td><td>" );
