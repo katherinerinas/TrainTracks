@@ -62,13 +62,15 @@ var frequency = childSnapshot.val().frequency;
 console.log(trainName);
 console.log(destination);
 console.log(firstTrain);
-console.log(frequency);
+console.log("frequency" + frequency);
 
 
-var choochooPretty = moment.unix(firstTrain).format("MM/DD/YY");
+
 
 var tFrequency = frequency;
 var firstTime= firstTrain ;
+
+var frequencyPretty = moment.unix(frequency).format("hh:mm")
 
 var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
 console.log (firstTimeConverted);
@@ -87,10 +89,12 @@ console.log("minutes till train:" + tMinutesTillTrain);
 
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log ("arrival time" + moment(nextTrain).format("hh:mm"));
+var choochooPretty = moment.unix(nextTrain).format("hh:mm");
 
+var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
 
 $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
-  choochooPretty + "</td><td>" + firstTrain + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td></tr>");
+ frequency + "</td><td>" + choochooPretty + "</td><td>" + minutesAwayPretty + "</td><td>" );
 
 });
 
