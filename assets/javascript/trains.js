@@ -87,7 +87,7 @@ console.log(tRemainder);
 var tMinutesTillTrain = tFrequency - tRemainder;
 console.log("minutes till train:" + tMinutesTillTrain);
 
-var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
+//var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
 
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log ("arrival time" + moment(nextTrain).format("hh:mm"));
@@ -95,7 +95,7 @@ var choochooPretty = moment.unix(nextTrain).format("hh:mm");
 
 
 $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
- frequency + "</td><td>" + choochooPretty + "</td><td>" + minutesAwayPretty + "</td><td>" );
+ frequency + "</td><td>" + choochooPretty + "</td><td>" + tMinutesTillTrain + "</td><td>" );
 
 });
 
