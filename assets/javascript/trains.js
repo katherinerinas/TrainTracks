@@ -83,8 +83,7 @@ var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 var choochooPretty = moment.unix(nextTrain).format("hh:mm");
 
 
-$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
- frequency + "</td><td>" + choochooPretty + "</td><td>" + tMinutesTillTrain + "</td><td>" );
+$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +frequency + "</td><td>" + choochooPretty + "</td><td>" + tMinutesTillTrain + "</td><td>" );
 
 });
 
