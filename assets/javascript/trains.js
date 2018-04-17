@@ -1,6 +1,5 @@
 
 
-  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBSPB4ZktB-UcuYv5hdjD1OdhTzv58HAj0",
     authDomain: "train-tracks-24af8.firebaseapp.com",
@@ -77,7 +76,6 @@ var tRemainder = diffTime % tFrequency;
 var tMinutesTillTrain = tFrequency - tRemainder;
 
 
-//var minutesAwayPretty = moment.unix(tMinutesTillTrain).format("hh:mm")
 
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 var choochooPretty = moment.unix(nextTrain).format("hh:mm");
