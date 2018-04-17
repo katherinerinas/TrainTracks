@@ -7,6 +7,7 @@ Technologies/Languages used:
 
 HTML/CSS/Javascript/Firebase
 
-<img src="/assets/images/traintracks.png" alt="train tracks picture">
 
 <a href="https://katherinerinas.github.io/TrainTracks/">GitHub Pages Link</a>
+
+<img src="/assets/images/traintracks.png" alt="train tracks picture">
